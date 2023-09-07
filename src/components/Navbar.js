@@ -1,31 +1,75 @@
-import { MdAccountCircle } from 'react-icons/md'
-import Link from 'next/link';
-import { useSession, signOut } from "next-auth/react"
+/* eslint-disable @next/next/no-img-element */
+import { AiFillCloseCircle, AiOutlineMenu } from "react-icons/ai";
+import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import { useState } from "react";
+import Logo from "./logo/Logo";
+import Button from "./button/Button";
+import List from "./list/List";
 const Navbar = () => {
   const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="text-gray-600 body-font shadow-md">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <Link className="flex title-font font-medium items-center text-gray-900 md:mb-ml-3 text-xl" href={'/'}> My Blog </Link>
-        <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-          <Link href={"/allPages/allBlog/blog"} className="mr-5 text-xl font-bold hover:text-gray-900">All Blogs</Link>
-        </nav>
-
-        <Link href={"/allPages/profile"} className="inline-flex items-center border-0 py-1 px-3
-         rounded text-base mt-4 md:mt-0">
-          <MdAccountCircle className='text-2xl' />
-        </Link>
-        {session && <button onClick={() => signOut()} className="inline-flex items-center bg-gray-100 border-0 py-1 px-3
-        focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Logout </button>}
-
-        {!session && <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3
-        focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-          <Link href={'/Forms/login'}>Login </Link></button>}
-
-
+    <nav className="flex shadow-xl items-center justify-between flex-wrap p-6">
+      <div className="flex items-center mr-6 lg:mr-72">
+        <Logo text={"Blogger.Com"} />
       </div>
-    </header>
-  );
-}
+      <div className="block lg:hidden">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
+        >
+          <ol>
+            <li>
+              <AiOutlineMenu
+                className={` text-black font-semibold text-lg hover:text-blue-400 ${
+                  isOpen ? "hidden" : "block"
+                }`}
+              />
+            </li>
+            <li>
+              <AiFillCloseCircle
+                className={` text-black font-semibold text-lg hover:text-blue-400 ${
+                  isOpen ? "block" : "hidden"
+                }`}
+              />
+            </li>
+          </ol>
+        </button>
+      </div>
+      <div
+        className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="flex  max-md:flex-col lg:flex-grow">
+          <Link href={"/"}>
+            <List itemText={"Dashboard"} />{" "}
+          </Link>
+          <Link href={""}>
+            <List itemText={"All Blogs"} />
+          </Link>
+          <Link href={""}>
+            <List itemText={"Contact us"} />
+          </Link>
+        </div>
 
-export default Navbar
+        {/* Login Button */}
+        {!session && (
+          <span>
+            <Button text={"Login"} />
+          </span>
+        )}
+
+        {/* Logout Button */}
+        {session && (
+          <span onClick={() => signOut()}>
+            <Button text={"Logout"} />
+          </span>
+        )}
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
