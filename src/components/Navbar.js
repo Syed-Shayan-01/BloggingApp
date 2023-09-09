@@ -46,7 +46,7 @@ const Navbar = () => {
           <Link href={"/"}>
             <List itemText={"Dashboard"} />{" "}
           </Link>
-          <Link href={""}>
+          <Link href={"/allPages/allBlog/"}>
             <List itemText={"All Blogs"} />
           </Link>
           <Link href={""}>
