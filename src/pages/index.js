@@ -1,12 +1,12 @@
 
-import DashBoard from '@/components/DashBoard'
+import DashboardForm from '@/components/userDashboard/DashBoard.jsx'
 import { getSession } from 'next-auth/react'
 import React from 'react'
 
 const Home = () => {
   return (
     <>
-      <DashBoard   />
+      <DashboardForm  />
     </>
   )
 }

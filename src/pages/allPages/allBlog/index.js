@@ -12,7 +12,7 @@ const allBlogs = ({ data }) => {
 
     return (
         <>
-            <nav className=" mt-1 py-2 text-4xl text-center font-mono">
+            <nav className=" py-10 text-4xl text-center font-mono">
                 <PagesName PagesName={'All Blogs'} />
             </nav>
             <div className="container px-5 py-10 mx-auto">

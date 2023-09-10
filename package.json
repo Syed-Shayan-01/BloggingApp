@@ -11,6 +11,7 @@
   "dependencies": {
     "autoprefixer": "10.4.15",
     "bcryptjs": "^2.4.3",
+    "ckeditor4-react": "^5.0.0",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "next": "13.4.19",
