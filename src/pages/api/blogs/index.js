@@ -7,6 +7,6 @@ export default function handler(req, res) {
     } else if (req.method === "POST") {
         const { BlogName, BlogContent, bloggerName } = req.body;
         saveBlogsData(BlogName, BlogContent, bloggerName);
-        return res.status(201).send({});
+        return res.status(201).json({});
     } res.status(404).send();
 }

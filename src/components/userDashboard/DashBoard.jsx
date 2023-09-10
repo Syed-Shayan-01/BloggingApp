@@ -19,8 +19,25 @@ const DashboardForm = () => {
     ContentEditor();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const req = { BlogName: Title, BlogContent: Content, bloggerName: "Sfj" };
+      console.log(req);
+      const response = await fetch("http://localhost:3000/api/blogs/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(req),
+      });
+      if (response.ok) {
+        alert("Success");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
     const ckContent = CKEDITOR.instances.Content.getData();
     setContent(ckContent);
     console.log(Title, Content);
@@ -28,7 +45,6 @@ const DashboardForm = () => {
     setBlog([...Blog, { Title, Content }]);
     console.log(Blog);
   };
-
   function createMarkup(c) {
     return { __html: c };
   }

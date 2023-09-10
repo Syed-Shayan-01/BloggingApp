@@ -3,6 +3,9 @@ import { getBlogsData, getBlogsId } from "@/services/blogs/blog";
 
 
 const allBlogs = ({ product }) => {
+    function createMarkup(c) {
+        return { __html: c };
+    }
     return (<>
         <div className=" text-center mt-16">
 
@@ -12,7 +15,7 @@ const allBlogs = ({ product }) => {
             </div>
             <div className="text-justify overflow-hidden p-10">
                 <div className="break-words text-lg">
-                    {product.BlogContent}
+                    {<div dangerouslySetInnerHTML={createMarkup(product.BlogContent)} />}
                 </div>
             </div>
 
