@@ -23,8 +23,8 @@ const allBlogs = ({ data }) => {
 
                             <div key={item.id} className="flex justify-center flex-wrap -m-12">
                                 <div className="p-12 md:w-1/2 flex flex-col items-start">
-                                    <span className="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{item.blogCategory}</span>
-                                    <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{item.name}</h2>
+                                    <span className="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{item.Category}</span>
+                                    <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{item.BlogName}</h2>
                                     <p className="leading-relaxed mb-8 break-words w-96">{item.BlogContent && item.BlogContent.length >= 40
                                         ? `${item.BlogContent.slice(0, 40)}...`
                                         : item.BlogContent}</p>

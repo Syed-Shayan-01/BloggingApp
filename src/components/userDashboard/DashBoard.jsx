@@ -1,24 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import PagesName from "../pagesName/PagesName";
 import Button from "../button/Button";
+import { CKEditor } from "ckeditor4-react";
 const DashboardForm = () => {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
   const [Blog, setBlog] = useState([]);
-  useEffect(() => {
-    const ContentEditor = () => {
-      const script = document.createElement("script");
-      script.src = "https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js";
-      script.async = true;
-      script.onload = () => {
-        CKEDITOR.replace("Content");
-      };
-      document.body.appendChild(script);
-    };
-
-    ContentEditor();
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,16 +18,16 @@ const DashboardForm = () => {
         },
         body: JSON.stringify(req),
       });
+
       if (response.ok) {
         alert("Success");
+      }
+      if (req.BlogContent === "") {
+        alert("Blog Content is not updated");
       }
     } catch (error) {
       console.error("Error:", error);
     }
-
-    const ckContent = CKEDITOR.instances.Content.getData();
-    setContent(ckContent);
-    console.log(Title, Content);
 
     setBlog([...Blog, { Title, Content }]);
     console.log(Blog);
@@ -82,7 +69,7 @@ const DashboardForm = () => {
                   Content<span className="text-red-500">*</span>
                 </label>
                 <br />
-                <textarea
+                {/* <textarea
                   type="text"
                   name="Content"
                   onChange={(e) => {
@@ -92,7 +79,8 @@ const DashboardForm = () => {
                   className="border-2 border-gray-500 focus:outline-blue-400 "
                   placeholder="Write the blog on your thoughts"
                   required
-                />
+                /> */}
+                <CKEditor initData="<p>This is an example CKEditor 4 WYSIWYG editor instance.</p>" />
               </div>
 
               <div className="flex p-1">
@@ -108,11 +96,7 @@ const DashboardForm = () => {
           return (
             <>
               <div>{check.Title}</div>
-              {
-                <div
-                  dangerouslySetInnerHTML={createMarkup(check.Content)}
-                ></div>
-              }
+              <div>{check.BlogContent}</div>
             </>
           );
         })}
