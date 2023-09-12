@@ -1,5 +1,5 @@
 
-import DashboardForm from '@/components/userDashboard/DashBoard.jsx'
+import DashboardForm from '@/pages/userDashboard/DashBoard.jsx'
 import { getSession } from 'next-auth/react'
 import React from 'react'
 
