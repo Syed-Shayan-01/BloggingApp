@@ -10,6 +10,9 @@ const allBlogs = ({ data }) => {
         return <div>Loading...</div>
     }
 
+    function createMarkup(c) {
+        return { __html: c };
+    }
     return (
         <>
             <nav className=" py-10 text-4xl text-center font-mono">
@@ -25,10 +28,16 @@ const allBlogs = ({ data }) => {
                                 <div className="p-12 md:w-1/2 flex flex-col items-start">
                                     <span className="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">{item.Category}</span>
                                     <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">{item.BlogName}</h2>
-                                    <p className="leading-relaxed mb-8 break-words w-96">{item.BlogContent && item.BlogContent.length >= 40
+                                    {/* <p className="leading-relaxed mb-8 break-words w-96">{item.BlogContent && item.BlogContent.length >= 40
                                         ? `${item.BlogContent.slice(0, 40)}...`
-                                        : item.BlogContent}</p>
-                                    <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+                                        : item.BlogContent}</p> */}
+
+                                    <div className="leading-relaxed mb-8 break-words w-96"
+                                        dangerouslySetInnerHTML={createMarkup(
+                                            item.BlogContent && item.BlogContent.length >= 40
+                                                ? `${item.BlogContent.slice(0, 40)}...`
+                                                : item.BlogContent
+                                        )} />                                    <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
                                         <div className="text-indigo-500 inline-flex items-center"><Link href={`/allPages/allBlog/${item.id}`}>Learn More</Link>
                                             <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M5 12h14"></path>

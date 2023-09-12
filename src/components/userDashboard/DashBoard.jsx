@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-sync-scripts */
-import React, { useEffect, useState } from "react";
-import PagesName from "../../components/pagesName/PagesName";
-import Button from "../../components/button/Button";
+import React, { useState } from "react";
+import PagesName from "../pagesName/PagesName";
+import Button from "../button/Button";
 import { CKEditor } from "ckeditor4-react";
-import { getBlogsData } from "@/services/blogs/blog";
-import Link from "next/link";
-const DashboardForm = ({ data }) => {
+import Head from "next/head";
+
+const DashboardForm = () => {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
   const handleSubmit = async (e) => {
@@ -30,12 +30,12 @@ const DashboardForm = ({ data }) => {
       console.error("Error:", error);
     }
   };
-  function createMarkup(c) {
-    return { __html: c };
-  }
 
   return (
     <div className="py-6 ">
+      <Head>
+        <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+      </Head>
       <nav className=" mt-1 py-2 text-4xl text-center font-mono">
         <PagesName PagesName={"Dashboard"} />
       </nav>
