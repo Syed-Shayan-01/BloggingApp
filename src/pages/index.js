@@ -6,7 +6,8 @@ import React from 'react'
 const Home = () => {
   return (
     <>
-      <DashboardForm  />
+      <DashboardForm />
+
     </>
   )
 }

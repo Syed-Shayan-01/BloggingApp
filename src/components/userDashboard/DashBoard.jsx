@@ -30,6 +30,38 @@ const DashboardForm = () => {
       console.error("Error:", error);
     }
   };
+  const blogCategory = [
+    { id: 1, name: "Food" },
+    { id: 2, name: "Travel" },
+    { id: 3, name: "Technology" },
+    { id: 4, name: "Lifestyle" },
+    { id: 5, name: "Fashion" },
+    { id: 6, name: "Health" },
+    { id: 7, name: "Fitness" },
+    { id: 8, name: "Cooking" },
+    { id: 9, name: "Gaming" },
+    { id: 10, name: "Books" },
+    { id: 11, name: "Movies" },
+    { id: 12, name: "Music" },
+    { id: 13, name: "Art" },
+    { id: 14, name: "Photography" },
+    { id: 15, name: "DIY" },
+    { id: 16, name: "Home Decor" },
+    { id: 17, name: "Finance" },
+    { id: 18, name: "Business" },
+    { id: 19, name: "Education" },
+    { id: 20, name: "Science" },
+    { id: 21, name: "Environment" },
+    { id: 22, name: "Parenting" },
+    { id: 23, name: "Pets" },
+    { id: 24, name: "Beauty" },
+    { id: 25, name: "Weddings" },
+    { id: 26, name: "Travel Tips" },
+    { id: 27, name: "Career" },
+    { id: 28, name: "Motivation" },
+    { id: 29, name: "Self Improvement" },
+    { id: 30, name: "Technology Trends" },
+  ];
 
   return (
     <div className="py-6 ">
@@ -62,6 +94,21 @@ const DashboardForm = () => {
                 />
               </div>
 
+              <div className="mb-4">
+                <label className="text-xl text-gray-600">
+                  Category <span className="text-red-500">*</span>
+                </label>
+                <br className="mb-2" />
+                <select className="border-2 mt-[1.5px] border-gray-300 focus:outline-blue-400 p-2 w-full">
+                  {blogCategory.map((items) => {
+                    return (
+                      <>
+                        <option key={items.id} className=" duration-300 ">{items.name}</option>
+                      </>
+                    );
+                  })}
+                </select>
+              </div>
               <div className="mb-8">
                 <label className="text-xl text-gray-600">
                   Content<span className="text-red-500">*</span>
