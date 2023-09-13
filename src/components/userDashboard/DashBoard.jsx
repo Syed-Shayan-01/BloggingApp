@@ -5,10 +5,13 @@ import PagesName from "../pagesName/PagesName";
 import Button from "../button/Button";
 import { CKEditor } from "ckeditor4-react";
 import Head from "next/head";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DashboardForm = () => {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
+  const [Images, setImages] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -22,13 +25,33 @@ const DashboardForm = () => {
         body: JSON.stringify(req),
       });
       if (req.BlogContent === "") {
-        return alert("Blog Content is not updated");
+        return toast.warning("Blog Content is Not Added! ", {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       } else if (response.ok) {
-        alert("Success");
+        toast.success("Hurry! Your Blog is Ready to view ", {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (error) {
       console.error("Error:", error);
     }
+
+    console.log(Images);
   };
   const blogCategory = [
     { id: 1, name: "Food" },
@@ -62,7 +85,6 @@ const DashboardForm = () => {
     { id: 29, name: "Self Improvement" },
     { id: 30, name: "Technology Trends" },
   ];
-
   return (
     <div className="py-6 ">
       <Head>
@@ -86,7 +108,7 @@ const DashboardForm = () => {
                     setTitle(e.target.value);
                   }}
                   value={Title}
-                  className="border-2 border-gray-300 focus:outline-blue-400 p-2 w-full"
+                  className="border-[1px] rounded-md border-gray-300 focus:outline-blue-400 p-2 w-full"
                   placeholder="Blog Title"
                   name="title"
                   id="title"
@@ -99,11 +121,11 @@ const DashboardForm = () => {
                   Category <span className="text-red-500">*</span>
                 </label>
                 <br className="mb-2" />
-                <select className="border-2 mt-[1.5px] border-gray-300 focus:outline-blue-400 p-2 w-full">
+                <select className=" mt-[1.9px] border-gray-300 rounded-md border-[1px] focus:outline-blue-400 p-2 w-full">
                   {blogCategory.map((items) => {
                     return (
                       <>
-                        <option key={items.id} className=" duration-300 ">{items.name}</option>
+                        <option key={items.id}>{items.name}</option>
                       </>
                     );
                   })}
@@ -131,6 +153,14 @@ const DashboardForm = () => {
                     setContent(e.editor.getData());
                   }}
                 />
+                <input
+                  type="file"
+                  accept="image/"
+                  onChange={(e) => {
+                    setImages(e.target.value);
+                  }}
+                  value={Images}
+                ></input>
               </div>
 
               <div className="flex p-1">
@@ -140,6 +170,19 @@ const DashboardForm = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      
     </div>
   );
 };
