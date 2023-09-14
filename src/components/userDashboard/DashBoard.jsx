@@ -11,11 +11,18 @@ import "react-toastify/dist/ReactToastify.css";
 const DashboardForm = () => {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
-  const [Images, setImages] = useState("");
+  const [Images, setImages] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", Images);
     try {
-      const req = { BlogName: Title, BlogContent: Content, bloggerName: "Sfj" };
+      const req = {
+        BlogName: Title,
+        BlogContent: Content,
+        bloggerName: Images,
+      };
       console.log(req);
       const response = await fetch("http://localhost:3000/api/blogs/", {
         method: "POST",
@@ -155,9 +162,9 @@ const DashboardForm = () => {
                 />
                 <input
                   type="file"
-                  accept="image/"
+                  accept="image/*"
                   onChange={(e) => {
-                    setImages(e.target.value);
+                    setImages(e.target.files[0]);
                   }}
                   value={Images}
                 ></input>
@@ -182,7 +189,6 @@ const DashboardForm = () => {
         pauseOnHover
         theme="light"
       />
-      
     </div>
   );
 };

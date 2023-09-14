@@ -6,6 +6,7 @@ import { useState } from "react";
 import Logo from "./logo/Logo";
 import Button from "./button/Button";
 import List from "./list/List";
+
 const Navbar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +50,7 @@ const Navbar = () => {
           <Link href={"/allPages/allBlog/"}>
             <List itemText={"All Blogs"} />
           </Link>
-          <Link href={""}>
+          <Link href={"/allPages/contactUs/contactUs"}>
             <List itemText={"Contact us"} />
           </Link>
         </div>
