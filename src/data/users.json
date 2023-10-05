@@ -8,5 +8,10 @@
         "id": 2,
         "email": "Syed",
         "password": "$2a$12$P64aPy2IWTmn2y8Zwfo75eABmLgie4cqLFaKOEw2fxfoQka4coj4G"
+    },
+    {
+        "id": 3,
+        "email": "ali@123",
+        "password": "$2a$12$cnttQffusH0B3mWuS5W44eBjuZeu3CsSxTKhlJtUe471Vc45Uz4se"
     }
 ]
