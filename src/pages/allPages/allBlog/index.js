@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import List from "@/components/list/List";
 import PagesName from "@/components/pagesName/PagesName";
