@@ -2,6 +2,7 @@
 import List from "@/components/list/List";
 import PagesName from "@/components/pagesName/PagesName";
 import { getBlogsData } from "@/services/blogs/blog";
+import Image from "next/image";
 import React from "react";
 
 // const allBlogs = ({ data }) => {
