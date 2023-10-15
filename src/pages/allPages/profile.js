@@ -2,7 +2,7 @@ import { BsPencilSquare } from 'react-icons/bs'
 import Image from "next/image"
 import { getSession } from 'next-auth/react';
 const profile = () => {
-  
+
     return (
         <>
             <div>
