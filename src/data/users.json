@@ -13,5 +13,10 @@
         "id": 3,
         "email": "ali@123",
         "password": "$2a$12$cnttQffusH0B3mWuS5W44eBjuZeu3CsSxTKhlJtUe471Vc45Uz4se"
+    },
+    {
+        "id": 4,
+        "email": "shayansyed@321",
+        "password": "$2a$12$Qca19e56Zp7WEgUcsO710OQ80UhRFX9gMjoWOGLEz34BH6vpq4e7C"
     }
 ]
