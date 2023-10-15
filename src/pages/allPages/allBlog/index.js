@@ -1,9 +1,7 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-/* eslint-disable @next/next/no-img-element */
+
 import List from "@/components/list/List";
 import PagesName from "@/components/pagesName/PagesName";
 import { getBlogsData } from "@/services/blogs/blog";
-import Link from "next/link";
 import React from "react";
 
 // const allBlogs = ({ data }) => {
@@ -150,11 +148,11 @@ const BlogCard = ({ image, date, CardTitle, CardDescription }) => {
 // export default allBlogs;
 
 export async function getServerSideProps() {
-    const data = await getBlogsData();
-    return {
-        props: {
-            data,
-        }
+  const data = await getBlogsData();
+  return {
+    props: {
+      data,
     }
+  }
 }
 

@@ -1,14 +1,14 @@
 
 import DashboardForm from '@/components/userDashboard/DashBoard.jsx'
 import { getSession } from 'next-auth/react'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Home = () => {
   return (
-    <>
+    <Fragment>
       <DashboardForm />
 
-    </>
+    </Fragment>
   )
 }
 

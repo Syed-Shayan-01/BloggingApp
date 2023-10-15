@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 import { AiFillCloseCircle, AiOutlineMenu } from "react-icons/ai";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
