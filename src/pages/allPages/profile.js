@@ -15,7 +15,7 @@ const profile = () => {
                 <div className="flex mt-20">
                     <Image src={'/Images/profile.png'} alt='Profile Image' width={100} height={25} ></Image>
                 </div>
-                <div className="mt-4 font-semibold">{newName}<span className=' inline-flex items-center cursor-pointer'><BsPencilSquare onClick={changeName} /></span></div>
+                <div className="mt-4 font-semibold">{newName}<span className=' inline-flex items-center cursor-pointer'><BsPencilSquare /></span></div>
                 {/* Change Password Input */}
                 <h2 className='font-bold text-xl mt-10'>
                     Password
